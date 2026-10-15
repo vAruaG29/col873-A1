@@ -19,7 +19,9 @@ src/
   select_best.py       picks the Part A checkpoint carried into Parts B and C
   build_pii_index.py   builds data/partC_pii_index.jsonl used by the untargeted attack
   verify_data.py       checks the dataset bundle against its manifest
+  verify_hf_adapters.py  checks the published adapters (public, identical, downloadable)
   make_figs.py         figures and summary tables in results/
+hf_adapters.json       Hugging Face repo (and pinned revision) the adapters are downloaded from
 results/
   partA_sweep.csv  partA_fig.png|pdf  partA_selection.json  partA_val_metrics.csv
   partB_metrics.json  partB_predictions.jsonl  partB_metrics_<system>.json  partB_summary.csv
@@ -112,7 +114,12 @@ a comma-separated list, or `all`.
 
 ## Notes
 
-- Validation F1 in Part A is computed on all 2,000 validation examples. A6 (QLoRA) needs gradient
+- Hardware: the reported runs used 40 GB A100s. Evaluation and attacks fit comfortably on a 16 GB
+  GPU, and on GPUs without bf16 (T4, P100, V100) the models run in fp16, which gave the same output
+  as bf16 on 98 of 100 test documents. Training A1 to A5 needs 26 to 32 GB without gradient
+  checkpointing, so on GPUs under 38 GB `peft_sweep.py` turns checkpointing on by itself (A4 then
+  peaks at 14.2 GB, see the `A4_ckpt` row); peak memory and speed then differ from the report.
+- Validation F1 in Part A is computed on all 2,000 validation examples (`--val_gen_n 0`, the default). A6 (QLoRA) needs gradient
   checkpointing to fit in 40 GB, so `A4_ckpt` (A4 with checkpointing) is trained as a control to
   separate the effect of checkpointing from quantization. It is ignored when selecting the checkpoint.
 - The selected checkpoint is A6; see `results/partA_selection.json`.

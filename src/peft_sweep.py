@@ -343,8 +343,8 @@ def parse_args(argv=None):
 
     p.add_argument("--eval_batch_size", type=int, default=8)
     p.add_argument("--gen_batch_size", type=int, default=16)
-    p.add_argument("--val_gen_n", type=int, default=300,
-                   help="fixed prefix of the validation file used for generative scoring")
+    p.add_argument("--val_gen_n", type=int, default=0,
+                   help="validation rows used for generative scoring (0 = all 2,000, as reported)")
     p.add_argument("--skip_val_gen", action="store_true")
     p.add_argument("--save_val_predictions", default="",
                    help="optional path for the validation generations")
@@ -369,6 +369,20 @@ def main(argv=None) -> int:
 
     import torch
     os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
+
+    # The reported runs used 40 GB A100s, where A1-A5 peak at 26-32 GB without
+    # checkpointing. On the handout's 16 GB reference GPUs (T4/P100/V100) that
+    # is an out-of-memory crash, while with checkpointing A4 peaks at 14.2 GB
+    # (the A4_ckpt row). Enable it rather than crash, and say so, because
+    # peak_gpu_mem_gb and throughput are then not comparable with the report.
+    if not args.gradient_checkpointing and torch.cuda.is_available():
+        total_gb = torch.cuda.get_device_properties(0).total_memory / 2**30
+        if total_gb < 38:
+            print(f"[note] {total_gb:.0f} GB GPU: enabling gradient checkpointing so the "
+                  f"run fits (the reported A1-A5 runs needed 26-32 GB without it); "
+                  f"peak memory and speed will differ from results/partA_sweep.csv",
+                  flush=True)
+            args.gradient_checkpointing = True
 
     set_seed(args.seed)
     cuda_reset_peak()
@@ -399,7 +413,7 @@ def main(argv=None) -> int:
     print(f"    dtype={dtype_name(torch_dtype)} trainable={pstats['trainable_params']:,} "
           f"({pstats['trainable_pct']:.4f}% of {pstats['total_params']:,})", flush=True)
     if args.gradient_checkpointing:
-        print("    gradient_checkpointing=ON (QLoRA / 4-bit)", flush=True)
+        print("    gradient_checkpointing=ON", flush=True)
 
     train_rows = read_jsonl(args.train_file, limit=args.limit_train or None)
     val_rows = read_jsonl(args.val_file, limit=args.limit_val or None)
