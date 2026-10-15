@@ -1,0 +1,263 @@
+{
+  "system": "finetuned",
+  "adapter": "adapters/best_sanitizer",
+  "source_corpus": "data/partC_corpus_raw.jsonl",
+  "output_corpus": "data/partC_corpus_sanitized.jsonl",
+  "n_rows": 8007,
+  "n_distinct_texts": 5020,
+  "n_rows_changed": 7080,
+  "frac_rows_changed": 0.8842263019857625,
+  "chars_in": 3270557,
+  "chars_out": 3211195,
+  "mean_placeholders_per_row": 6.360934182590234,
+  "runtime": {
+    "dtype": "bfloat16",
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "gen_wallclock_s": 1213.1395432949066,
+    "n_input_tokens": 997217,
+    "n_new_tokens": 511480,
+    "system_prompt": "You are a PII sanitizer. Rewrite the user's text, replacing every span of personally identifiable information with a placeholder of the form [LABEL], where LABEL is the PII type. Copy every other character exactly, including whitespace, punctuation and line breaks. Output only the rewritten text.",
+    "n_shot": 0,
+    "merge_adapter": true
+  },
+  "canary_sanitization": {
+    "n_canaries": 20,
+    "n_text_changed": 20,
+    "n_secret_survived_verbatim": 0,
+    "secret_survival_rate": 0.0,
+    "per_canary": [
+      {
+        "canary_id": "canary_00",
+        "n_reps": 1,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project amber is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_01",
+        "n_reps": 1,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project brisk is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_02",
+        "n_reps": 1,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project coral is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_03",
+        "n_reps": 1,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project delta is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_04",
+        "n_reps": 1,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project ember is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_05",
+        "n_reps": 4,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project frost is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_06",
+        "n_reps": 4,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project glint is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_07",
+        "n_reps": 4,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project harbor is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_08",
+        "n_reps": 4,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project indigo is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_09",
+        "n_reps": 4,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project juniper is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_10",
+        "n_reps": 16,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project kepler is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_11",
+        "n_reps": 16,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project lunar is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_12",
+        "n_reps": 16,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project maple is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_13",
+        "n_reps": 16,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project nova is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_14",
+        "n_reps": 16,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project onyx is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_15",
+        "n_reps": 64,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project polar is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_16",
+        "n_reps": 64,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project quartz is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_17",
+        "n_reps": 64,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project river is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_18",
+        "n_reps": 64,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project solar is [PASSPORT]."
+      },
+      {
+        "canary_id": "canary_19",
+        "n_reps": 64,
+        "text_changed": true,
+        "secret_survived_verbatim": false,
+        "placeholders": [
+          "PASSPORT"
+        ],
+        "sanitized_text": "The six-digit access code for project tundra is [PASSPORT]."
+      }
+    ]
+  },
+  "targeted_value_survival": {
+    "n_member_prompts": 200,
+    "n_gold_values_surviving": 5,
+    "survival_rate": 0.025,
+    "surviving": [
+      {
+        "id": "member_004",
+        "label": "DATE",
+        "doc_id": "doc_00004"
+      },
+      {
+        "id": "member_046",
+        "label": "SEX",
+        "doc_id": "doc_00051"
+      },
+      {
+        "id": "member_055",
+        "label": "COUNTRY",
+        "doc_id": "doc_00062"
+      },
+      {
+        "id": "member_092",
+        "label": "TITLE",
+        "doc_id": "doc_00108"
+      },
+      {
+        "id": "member_102",
+        "label": "USERNAME",
+        "doc_id": "doc_00121"
+      }
+    ]
+  }
+}

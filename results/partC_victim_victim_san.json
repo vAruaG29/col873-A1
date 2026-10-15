@@ -1,0 +1,168 @@
+{
+  "victim": "victim_san",
+  "model": "Qwen/Qwen2.5-0.5B",
+  "corpus": "data/partC_corpus_sanitized.jsonl",
+  "n_rows": 8007,
+  "timestamp": "2026-09-12 14:47:25",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "dtype": "bfloat16",
+  "args": {
+    "model": "Qwen/Qwen2.5-0.5B",
+    "corpus": "data/partC_corpus_sanitized.jsonl",
+    "heldout": "data/partC_heldout.jsonl",
+    "target_modules": "q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj",
+    "lora_r": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0.0,
+    "quant": "none",
+    "epochs": 4,
+    "seed": 42,
+    "output_dir": "adapters/victim_san",
+    "victim_name": "victim_san",
+    "report_file": "results/partC_victim_victim_san.json",
+    "results_csv": "results/partC_victims.csv",
+    "lr": 0.0002,
+    "batch_size": 8,
+    "grad_accum": 4,
+    "warmup_ratio": 0.03,
+    "weight_decay": 0.0,
+    "max_grad_norm": 1.0,
+    "max_seq_len": 512,
+    "dtype": "auto",
+    "gradient_checkpointing": false,
+    "eval_batch_size": 16,
+    "eval_every_epoch": true,
+    "train_ppl_sample": 600,
+    "limit": 0,
+    "log_every": 50,
+    "smoke": false
+  },
+  "param_stats": {
+    "trainable_params": 17596416,
+    "total_params": 511629184,
+    "trainable_pct": 3.4392909064389885
+  },
+  "data_stats": {
+    "n_examples": 8007,
+    "n_truncated": 10,
+    "tok_len_p50": 95,
+    "tok_len_p95": 147,
+    "tok_len_max": 765,
+    "total_tokens": 780312
+  },
+  "train_stats": {
+    "train_wallclock_s": 668.7597687244415,
+    "train_tokens": 3111652,
+    "tokens_per_s": 4652.86960358726,
+    "final_train_loss": 0.4260144122503698,
+    "optimizer_steps": 1004,
+    "epoch_heldout_ppl": [
+      {
+        "epoch": 0,
+        "ppl": 9.950944109386995,
+        "mean_nll": 2.297667432034697,
+        "n_docs": 500,
+        "n_tokens": 64958,
+        "mean_doc_ppl": 11.905924640421613
+      },
+      {
+        "epoch": 1,
+        "ppl": 9.937835956480038,
+        "mean_nll": 2.296349286350396,
+        "n_docs": 500,
+        "n_tokens": 64958,
+        "mean_doc_ppl": 11.960205740296034
+      },
+      {
+        "epoch": 2,
+        "ppl": 10.902336747231864,
+        "mean_nll": 2.388977146738874,
+        "n_docs": 500,
+        "n_tokens": 64958,
+        "mean_doc_ppl": 13.728162846231402
+      },
+      {
+        "epoch": 3,
+        "ppl": 12.809030263789962,
+        "mean_nll": 2.550150411543527,
+        "n_docs": 500,
+        "n_tokens": 64958,
+        "mean_doc_ppl": 16.912267070437455
+      }
+    ]
+  },
+  "peak_gpu_mem_gb": 14.186222076416016,
+  "heldout_ppl_base": {
+    "ppl": 14.180887928830032,
+    "mean_nll": 2.651895137537751,
+    "n_docs": 500,
+    "n_tokens": 64958,
+    "mean_doc_ppl": 17.63314173827964
+  },
+  "heldout_ppl_victim": {
+    "ppl": 12.809030263789962,
+    "mean_nll": 2.550150411543527,
+    "n_docs": 500,
+    "n_tokens": 64958,
+    "mean_doc_ppl": 16.912267070437455
+  },
+  "train_ppl_victim": {
+    "ppl": 1.8322816826490096,
+    "mean_nll": 0.6055620113370385,
+    "n_docs": 600,
+    "n_tokens": 60551,
+    "mean_doc_ppl": 1.980818597837061
+  },
+  "train_ppl_by_n_reps": {
+    "1": {
+      "ppl": 1.8514147210895722,
+      "mean_nll": 0.6159500609478553,
+      "n_docs": 578,
+      "n_tokens": 58640,
+      "mean_doc_ppl": 2.0051949463996586
+    },
+    "2": {
+      "ppl": 1.5834409629211283,
+      "mean_nll": 0.45960030364990234,
+      "n_docs": 11,
+      "n_tokens": 1125,
+      "mean_doc_ppl": 1.5750821893066322
+    },
+    "4": {
+      "ppl": 1.4861961711296507,
+      "mean_nll": 0.39621995045588565,
+      "n_docs": 1,
+      "n_tokens": 13,
+      "mean_doc_ppl": 1.4861961711296507
+    },
+    "8": {
+      "ppl": 1.041472536713747,
+      "mean_nll": 0.040635612397383475,
+      "n_docs": 4,
+      "n_tokens": 327,
+      "mean_doc_ppl": 1.0431554766692317
+    },
+    "16": {
+      "ppl": 1.3096193131567508,
+      "mean_nll": 0.2697364943368094,
+      "n_docs": 1,
+      "n_tokens": 14,
+      "mean_doc_ppl": 1.3096193131567508
+    },
+    "32": {
+      "ppl": 1.0134374458472755,
+      "mean_nll": 0.013347964084802778,
+      "n_docs": 4,
+      "n_tokens": 419,
+      "mean_doc_ppl": 1.0124504418290325
+    },
+    "64": {
+      "ppl": 1.146376698416997,
+      "mean_nll": 0.13660627145033616,
+      "n_docs": 1,
+      "n_tokens": 13,
+      "mean_doc_ppl": 1.146376698416997
+    }
+  },
+  "memorization_gap_heldout_minus_train": 10.976748581140953
+}

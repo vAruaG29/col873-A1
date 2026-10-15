@@ -1,0 +1,168 @@
+{
+  "victim": "victim_raw",
+  "model": "Qwen/Qwen2.5-0.5B",
+  "corpus": "data/partC_corpus_raw.jsonl",
+  "n_rows": 8007,
+  "timestamp": "2026-09-12 14:47:32",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "dtype": "bfloat16",
+  "args": {
+    "model": "Qwen/Qwen2.5-0.5B",
+    "corpus": "data/partC_corpus_raw.jsonl",
+    "heldout": "data/partC_heldout.jsonl",
+    "target_modules": "q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj",
+    "lora_r": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0.0,
+    "quant": "none",
+    "epochs": 4,
+    "seed": 42,
+    "output_dir": "adapters/victim_raw",
+    "victim_name": "victim_raw",
+    "report_file": "results/partC_victim_victim_raw.json",
+    "results_csv": "results/partC_victims.csv",
+    "lr": 0.0002,
+    "batch_size": 8,
+    "grad_accum": 4,
+    "warmup_ratio": 0.03,
+    "weight_decay": 0.0,
+    "max_grad_norm": 1.0,
+    "max_seq_len": 512,
+    "dtype": "auto",
+    "gradient_checkpointing": false,
+    "eval_batch_size": 16,
+    "eval_every_epoch": true,
+    "train_ppl_sample": 600,
+    "limit": 0,
+    "log_every": 50,
+    "smoke": false
+  },
+  "param_stats": {
+    "trainable_params": 17596416,
+    "total_params": 511629184,
+    "trainable_pct": 3.4392909064389885
+  },
+  "data_stats": {
+    "n_examples": 8007,
+    "n_truncated": 0,
+    "tok_len_p50": 118,
+    "tok_len_p95": 205,
+    "tok_len_max": 379,
+    "total_tokens": 985235
+  },
+  "train_stats": {
+    "train_wallclock_s": 674.3900761604309,
+    "train_tokens": 3940940,
+    "tokens_per_s": 5843.709952609814,
+    "final_train_loss": 0.8700421085115522,
+    "optimizer_steps": 1004,
+    "epoch_heldout_ppl": [
+      {
+        "epoch": 0,
+        "ppl": 7.566241307649431,
+        "mean_nll": 2.0236964193910407,
+        "n_docs": 500,
+        "n_tokens": 64958,
+        "mean_doc_ppl": 9.030498073843221
+      },
+      {
+        "epoch": 1,
+        "ppl": 7.34582519902314,
+        "mean_nll": 1.994132151718654,
+        "n_docs": 500,
+        "n_tokens": 64958,
+        "mean_doc_ppl": 8.851914092425297
+      },
+      {
+        "epoch": 2,
+        "ppl": 7.732637147088732,
+        "mean_nll": 2.04544996186839,
+        "n_docs": 500,
+        "n_tokens": 64958,
+        "mean_doc_ppl": 9.657488741870578
+      },
+      {
+        "epoch": 3,
+        "ppl": 8.385132859201265,
+        "mean_nll": 2.1264602400156263,
+        "n_docs": 500,
+        "n_tokens": 64958,
+        "mean_doc_ppl": 10.946210665276555
+      }
+    ]
+  },
+  "peak_gpu_mem_gb": 10.80359172821045,
+  "heldout_ppl_base": {
+    "ppl": 14.180887928830032,
+    "mean_nll": 2.651895137537751,
+    "n_docs": 500,
+    "n_tokens": 64958,
+    "mean_doc_ppl": 17.63314173827964
+  },
+  "heldout_ppl_victim": {
+    "ppl": 8.385132859201265,
+    "mean_nll": 2.1264602400156263,
+    "n_docs": 500,
+    "n_tokens": 64958,
+    "mean_doc_ppl": 10.946210665276555
+  },
+  "train_ppl_victim": {
+    "ppl": 3.9387332545890943,
+    "mean_nll": 1.3708591626272078,
+    "n_docs": 600,
+    "n_tokens": 76754,
+    "mean_doc_ppl": 4.183769378701841
+  },
+  "train_ppl_by_n_reps": {
+    "1": {
+      "ppl": 4.028703305135346,
+      "mean_nll": 1.3934445636702502,
+      "n_docs": 578,
+      "n_tokens": 74230,
+      "mean_doc_ppl": 4.263093543254688
+    },
+    "2": {
+      "ppl": 3.180646881656865,
+      "mean_nll": 1.1570845980093298,
+      "n_docs": 11,
+      "n_tokens": 1506,
+      "mean_doc_ppl": 3.106929773997679
+    },
+    "4": {
+      "ppl": 1.3747755177967416,
+      "mean_nll": 0.31829045800601735,
+      "n_docs": 1,
+      "n_tokens": 17,
+      "mean_doc_ppl": 1.3747755177967416
+    },
+    "8": {
+      "ppl": 1.0418784019976017,
+      "mean_nll": 0.04102523978223506,
+      "n_docs": 4,
+      "n_tokens": 388,
+      "mean_doc_ppl": 1.0425032351027625
+    },
+    "16": {
+      "ppl": 1.2165939632306026,
+      "mean_nll": 0.1960551208919949,
+      "n_docs": 1,
+      "n_tokens": 18,
+      "mean_doc_ppl": 1.2165939632306026
+    },
+    "32": {
+      "ppl": 1.0125728866733517,
+      "mean_nll": 0.012494504245507264,
+      "n_docs": 4,
+      "n_tokens": 578,
+      "mean_doc_ppl": 1.0124486542921098
+    },
+    "64": {
+      "ppl": 1.110256825201273,
+      "mean_nll": 0.1045913626165951,
+      "n_docs": 1,
+      "n_tokens": 17,
+      "mean_doc_ppl": 1.110256825201273
+    }
+  },
+  "memorization_gap_heldout_minus_train": 4.446399604612171
+}

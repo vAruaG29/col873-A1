@@ -1,0 +1,949 @@
+{
+  "victim": "victim_san",
+  "victim_model": "Qwen/Qwen2.5-0.5B",
+  "adapter": "adapters/victim_san",
+  "ref_model": "Qwen/Qwen2.5-0.5B",
+  "corpus": "partC_corpus_sanitized.jsonl",
+  "corpus_rows": 8007,
+  "attacks_run": [
+    "discoverable",
+    "untargeted",
+    "canary",
+    "targeted"
+  ],
+  "seed": 42,
+  "timestamp": "2026-09-12 14:47:45",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "dtype": "bfloat16",
+  "args": {
+    "victim_model": "Qwen/Qwen2.5-0.5B",
+    "adapter_path": "adapters/victim_san",
+    "ref_model": "Qwen/Qwen2.5-0.5B",
+    "corpus": "data/partC_corpus_sanitized.jsonl",
+    "canaries": "data/partC_canaries.jsonl",
+    "targeted_file": "data/partC_targeted.jsonl",
+    "heldout": "data/partC_heldout.jsonl",
+    "pii_index": "data/partC_pii_index.jsonl",
+    "attack": "all",
+    "num_samples": 5000,
+    "seed": 42,
+    "report_file": "results/partC_attacks_victim_san.json",
+    "victim_name": "victim_san",
+    "records_dir": "results/attack_records",
+    "dtype": "auto",
+    "quant": "none",
+    "merge_adapter": true,
+    "max_seq_len": 512,
+    "gen_batch_size": 32,
+    "score_batch_size": 32,
+    "eval_batch_size": 16,
+    "no_ref_model": false,
+    "prefix_tokens": 32,
+    "suffix_tokens": 32,
+    "min_suffix_tokens": 8,
+    "disc_per_group": 400,
+    "sample_max_new_tokens": 128,
+    "sample_min_new_tokens": 24,
+    "sample_batch_size": 64,
+    "temperature": 1.0,
+    "top_k": 40,
+    "top_p": 1.0,
+    "mem_min_chars": 50,
+    "precision_at": 100,
+    "dump_generations": true,
+    "canary_num_alternatives": 9999,
+    "no_canary_exact": false,
+    "canary_exact_batch": 1024,
+    "canary_space": 1000000,
+    "canary_batch_size": 128,
+    "targeted_k": 10,
+    "targeted_extra_tokens": 8,
+    "targeted_max_new_tokens": 32,
+    "limit": 0,
+    "smoke": false
+  },
+  "heldout_ppl": 12.82216575034102,
+  "heldout_ppl_detail": {
+    "ppl": 12.82216575034102,
+    "mean_nll": 2.5511753725085766,
+    "n_docs": 500,
+    "n_tokens": 64958,
+    "mean_doc_ppl": 16.93950747454696
+  },
+  "discoverable": {
+    "prefix_tokens": 32,
+    "suffix_tokens": 32,
+    "n_documents": 620,
+    "n_excluded_short": 0,
+    "exact_match_rate": 0.33064516129032256,
+    "mean_edit_sim": 0.7121812119471961,
+    "by_n_reps": {
+      "1": {
+        "exact_match_rate": 0.115,
+        "token_exact_match_rate": 0.115,
+        "mean_edit_sim": 0.598793472557391,
+        "n": 400
+      },
+      "2": {
+        "exact_match_rate": 0.3880597014925373,
+        "token_exact_match_rate": 0.3880597014925373,
+        "mean_edit_sim": 0.7764520898002253,
+        "n": 67
+      },
+      "8": {
+        "exact_match_rate": 0.9850746268656716,
+        "token_exact_match_rate": 0.9850746268656716,
+        "mean_edit_sim": 0.9989339019189766,
+        "n": 67
+      },
+      "32": {
+        "exact_match_rate": 1.0,
+        "token_exact_match_rate": 1.0,
+        "mean_edit_sim": 1.0,
+        "n": 66
+      }
+    },
+    "canary_by_n_reps": {
+      "1": {
+        "exact_match_rate": 0.0,
+        "token_exact_match_rate": 0.0,
+        "mean_edit_sim": 0.8827586206896552,
+        "n": 5
+      },
+      "4": {
+        "exact_match_rate": 0.0,
+        "token_exact_match_rate": 0.0,
+        "mean_edit_sim": 0.7923030286755888,
+        "n": 5
+      },
+      "16": {
+        "exact_match_rate": 0.0,
+        "token_exact_match_rate": 0.0,
+        "mean_edit_sim": 0.8521440236819389,
+        "n": 5
+      },
+      "64": {
+        "exact_match_rate": 0.2,
+        "token_exact_match_rate": 0.2,
+        "mean_edit_sim": 0.88961451477651,
+        "n": 5
+      }
+    }
+  },
+  "untargeted": {
+    "n_generated": 5000,
+    "n_unique": 4986,
+    "sampling": {
+      "temperature": 1.0,
+      "top_k": 40,
+      "top_p": 1.0,
+      "max_new_tokens": 128
+    },
+    "verification": {
+      "criterion": "longest common substring >= 50 chars",
+      "n_verified_memorized": 1979,
+      "verified_rate": 0.396911351784998,
+      "mean_longest_match_chars": 52.62916165262736,
+      "max_longest_match_chars": 473
+    },
+    "precision_at_100": {
+      "ppl": 0.65,
+      "ratio_ref": 0.9,
+      "ratio_lower": 0.8,
+      "ratio_zlib": 0.94
+    },
+    "precision_at_k": 100,
+    "distinct_docs_recovered": 941,
+    "doc_recovery_rate": 0.18745019920318726,
+    "distinct_pii_values_recovered": 21,
+    "pii_recovery_rate": 0.002527988443481401,
+    "pii_index_size": 8307,
+    "verified_pii_strings": 2,
+    "verified_pii_by_type": {
+      "SSN": 1,
+      "TEL": 1
+    },
+    "pii_recovery": {
+      "targeted_gold_values_recovered": 26,
+      "targeted_gold_values_total": 200,
+      "targeted_recovery_rate": 0.13,
+      "canary_secrets_recovered": 0,
+      "canary_secrets_total": 20
+    },
+    "wallclock_s": 843.3612923622131
+  },
+  "canary": {
+    "n_canaries": 20,
+    "mean_exposure": 1.2058814274555396,
+    "space_size": 1000000,
+    "n_alternatives": 9999,
+    "max_measurable_exposure": 13.28771237954945,
+    "estimator_note": "With 9999 sampled alternatives the smallest observable rank is 1, so rank_hat bottoms out at 100 and exposure saturates at 13.29 bits (the true ceiling is log2(|R|) = 19.93). Any canary reported at the ceiling is therefore a lower bound: the estimator cannot distinguish 'best of 10k' from 'best of 1M'.",
+    "by_n_reps": {
+      "1": {
+        "mean_exposure": 2.2902890818119026,
+        "min_exposure": 0.16052407850624562,
+        "max_exposure": 5.9839316313723465,
+        "mean_rank_in_sample": 4306.8,
+        "n_saturated": 0,
+        "n": 5
+      },
+      "4": {
+        "mean_exposure": 0.9024058037539604,
+        "min_exposure": 0.5730375522414484,
+        "max_exposure": 1.2539452647030593,
+        "mean_rank_in_sample": 5431.2,
+        "n_saturated": 0,
+        "n": 5
+      },
+      "16": {
+        "mean_exposure": 0.9134641693275398,
+        "min_exposure": 0.17283135070796973,
+        "max_exposure": 2.341537138825892,
+        "mean_rank_in_sample": 6244.4,
+        "n_saturated": 0,
+        "n": 5
+      },
+      "64": {
+        "mean_exposure": 0.7173666549287553,
+        "min_exposure": 0.22583494849358132,
+        "max_exposure": 1.369221787257139,
+        "mean_rank_in_sample": 6371.0,
+        "n_saturated": 0,
+        "n": 5
+      }
+    },
+    "per_canary": [
+      {
+        "canary_id": "canary_00",
+        "n_reps": 1,
+        "rank_in_sample": 8473,
+        "rank_hat": 847300.0,
+        "exposure": 0.23905522582355587,
+        "true_log_ppl": 64.3521957397461,
+        "mean_alt_log_ppl": 57.31374680818301,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_01",
+        "n_reps": 1,
+        "rank_in_sample": 158,
+        "rank_hat": 15800.000000000002,
+        "exposure": 5.9839316313723465,
+        "true_log_ppl": 47.38374328613281,
+        "mean_alt_log_ppl": 59.67194496663717,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_02",
+        "n_reps": 1,
+        "rank_in_sample": 8947,
+        "rank_hat": 894700.0,
+        "exposure": 0.16052407850624562,
+        "true_log_ppl": 67.7646255493164,
+        "mean_alt_log_ppl": 57.67776378963885,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_03",
+        "n_reps": 1,
+        "rank_in_sample": 1013,
+        "rank_hat": 101300.0,
+        "exposure": 3.3032939207483096,
+        "true_log_ppl": 51.40346145629883,
+        "mean_alt_log_ppl": 60.424273625864174,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_04",
+        "n_reps": 1,
+        "rank_in_sample": 2943,
+        "rank_hat": 294300.0,
+        "exposure": 1.7646405526090554,
+        "true_log_ppl": 57.48926544189453,
+        "mean_alt_log_ppl": 61.77293036844578,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_05",
+        "n_reps": 4,
+        "rank_in_sample": 6190,
+        "rank_hat": 619000.0,
+        "exposure": 0.6919886854478214,
+        "true_log_ppl": 53.94879913330078,
+        "mean_alt_log_ppl": 52.362851468023386,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_06",
+        "n_reps": 4,
+        "rank_in_sample": 4658,
+        "rank_hat": 465800.0,
+        "exposure": 1.1022174553385824,
+        "true_log_ppl": 53.361328125,
+        "mean_alt_log_ppl": 54.38144607917823,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_07",
+        "n_reps": 4,
+        "rank_in_sample": 6722,
+        "rank_hat": 672200.0,
+        "exposure": 0.5730375522414484,
+        "true_log_ppl": 55.18228530883789,
+        "mean_alt_log_ppl": 52.50446241885999,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_08",
+        "n_reps": 4,
+        "rank_in_sample": 4193,
+        "rank_hat": 419300.0,
+        "exposure": 1.2539452647030593,
+        "true_log_ppl": 55.47629928588867,
+        "mean_alt_log_ppl": 57.29810716629219,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_09",
+        "n_reps": 4,
+        "rank_in_sample": 5393,
+        "rank_hat": 539300.0,
+        "exposure": 0.8908400610388902,
+        "true_log_ppl": 57.23331832885742,
+        "mean_alt_log_ppl": 56.93221492406809,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_10",
+        "n_reps": 16,
+        "rank_in_sample": 8871,
+        "rank_hat": 887100.0,
+        "exposure": 0.17283135070796973,
+        "true_log_ppl": 63.327640533447266,
+        "mean_alt_log_ppl": 54.54853236407015,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_11",
+        "n_reps": 16,
+        "rank_in_sample": 8311,
+        "rank_hat": 831100.0,
+        "exposure": 0.2669060188251855,
+        "true_log_ppl": 59.18940734863281,
+        "mean_alt_log_ppl": 52.17886495642667,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_12",
+        "n_reps": 16,
+        "rank_in_sample": 8755,
+        "rank_hat": 875500.0,
+        "exposure": 0.19182091622852937,
+        "true_log_ppl": 63.15170669555664,
+        "mean_alt_log_ppl": 54.04077230290015,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_13",
+        "n_reps": 16,
+        "rank_in_sample": 1973,
+        "rank_hat": 197300.0,
+        "exposure": 2.341537138825892,
+        "true_log_ppl": 48.156917572021484,
+        "mean_alt_log_ppl": 54.77038599627175,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_14",
+        "n_reps": 16,
+        "rank_in_sample": 3312,
+        "rank_hat": 331200.0,
+        "exposure": 1.5942254220501226,
+        "true_log_ppl": 55.34882736206055,
+        "mean_alt_log_ppl": 58.914730901038105,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_15",
+        "n_reps": 64,
+        "rank_in_sample": 6284,
+        "rank_hat": 628400.0,
+        "exposure": 0.6702449142552531,
+        "true_log_ppl": 54.849708557128906,
+        "mean_alt_log_ppl": 52.70324835980912,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_16",
+        "n_reps": 64,
+        "rank_in_sample": 4782,
+        "rank_hat": 478200.0,
+        "exposure": 1.0643139648378224,
+        "true_log_ppl": 52.808841705322266,
+        "mean_alt_log_ppl": 53.59356991855344,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_17",
+        "n_reps": 64,
+        "rank_in_sample": 8551,
+        "rank_hat": 855100.0,
+        "exposure": 0.22583494849358132,
+        "true_log_ppl": 58.929203033447266,
+        "mean_alt_log_ppl": 50.703760897329964,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_18",
+        "n_reps": 64,
+        "rank_in_sample": 8367,
+        "rank_hat": 836700.0,
+        "exposure": 0.2572176597999807,
+        "true_log_ppl": 55.161502838134766,
+        "mean_alt_log_ppl": 47.91109570513631,
+        "saturated": false
+      },
+      {
+        "canary_id": "canary_19",
+        "n_reps": 64,
+        "rank_in_sample": 3871,
+        "rank_hat": 387100.0,
+        "exposure": 1.369221787257139,
+        "true_log_ppl": 51.432228088378906,
+        "mean_alt_log_ppl": 54.137265275103864,
+        "saturated": false
+      }
+    ],
+    "wallclock_s": 68.18756890296936,
+    "exact": {
+      "method": "exact_enumeration",
+      "n_canaries": 20,
+      "mean_exposure": 1.1979524416824683,
+      "space_size": 1000000,
+      "max_exposure": 19.931568569324174,
+      "n_rank1": 0,
+      "by_n_reps": {
+        "1": {
+          "mean_exposure": 2.248169715171455,
+          "min_exposure": 0.1616548772325146,
+          "max_exposure": 5.724706826487051,
+          "mean_rank": 434778.8,
+          "mean_margin_bits": -38.824371286518364,
+          "mean_secret_nll": 29.052863311767577,
+          "n_rank1": 0,
+          "n": 5
+        },
+        "4": {
+          "mean_exposure": 0.9402247542792139,
+          "min_exposure": 0.7026770884343705,
+          "max_exposure": 1.28004732727344,
+          "mean_rank": 527931.4,
+          "mean_margin_bits": -42.60751851062291,
+          "mean_secret_nll": 31.176156997680664,
+          "n_rank1": 0,
+          "n": 5
+        },
+        "16": {
+          "mean_exposure": 0.932893945451184,
+          "min_exposure": 0.16526775262944682,
+          "max_exposure": 2.452656785171232,
+          "mean_rank": 624827.6,
+          "mean_margin_bits": -48.07902959962057,
+          "mean_secret_nll": 35.27934341430664,
+          "n_rank1": 0,
+          "n": 5
+        },
+        "64": {
+          "mean_exposure": 0.6705213518280203,
+          "min_exposure": 0.20192957182226579,
+          "max_exposure": 1.326219274719886,
+          "mean_rank": 657593.8,
+          "mean_margin_bits": -46.81310355556099,
+          "mean_secret_nll": 35.08945198059082,
+          "n_rank1": 0,
+          "n": 5
+        }
+      },
+      "per_canary": [
+        {
+          "canary_id": "canary_00",
+          "n_reps": 1,
+          "rank": 875966,
+          "exposure": 0.19105322116060464,
+          "secret_nll": 37.602638244628906,
+          "best_alt_nll": 2.160839080810547,
+          "margin_bits": -51.13170789382336,
+          "mean_alt_nll": 29.61663055419922
+        },
+        {
+          "canary_id": "canary_01",
+          "n_reps": 1,
+          "rank": 18910,
+          "exposure": 5.724706826487051,
+          "secret_nll": 16.60276985168457,
+          "best_alt_nll": 1.9525413513183594,
+          "margin_bits": -21.13581200536849,
+          "mean_alt_nll": 28.489913940429688
+        },
+        {
+          "canary_id": "canary_02",
+          "n_reps": 1,
+          "rank": 893999,
+          "exposure": 0.1616548772325146,
+          "secret_nll": 41.96669387817383,
+          "best_alt_nll": 2.171060562133789,
+          "margin_bits": -57.41296283408658,
+          "mean_alt_nll": 31.789960861206055
+        },
+        {
+          "canary_id": "canary_03",
+          "n_reps": 1,
+          "rank": 96818,
+          "exposure": 3.3685808974751907,
+          "secret_nll": 22.634624481201172,
+          "best_alt_nll": 2.1724987030029297,
+          "margin_bits": -29.520607386252827,
+          "mean_alt_nll": 31.793909072875977
+        },
+        {
+          "canary_id": "canary_04",
+          "n_reps": 1,
+          "rank": 288201,
+          "exposure": 1.7948527535019139,
+          "secret_nll": 26.457590103149414,
+          "best_alt_nll": 2.252359390258789,
+          "margin_bits": -34.92076631306053,
+          "mean_alt_nll": 30.90403938293457
+        },
+        {
+          "canary_id": "canary_05",
+          "n_reps": 4,
+          "rank": 599050,
+          "exposure": 0.7392516716035509,
+          "secret_nll": 31.986248016357422,
+          "best_alt_nll": 2.02545166015625,
+          "margin_bits": -43.22429232417556,
+          "mean_alt_nll": 30.637428283691406
+        },
+        {
+          "canary_id": "canary_06",
+          "n_reps": 4,
+          "rank": 447121,
+          "exposure": 1.1612627881381528,
+          "secret_nll": 29.18964385986328,
+          "best_alt_nll": 0.8514213562011719,
+          "margin_bits": -40.88341307364135,
+          "mean_alt_nll": 30.41008186340332
+        },
+        {
+          "canary_id": "canary_07",
+          "n_reps": 4,
+          "rank": 614431,
+          "exposure": 0.7026770884343705,
+          "secret_nll": 31.671802520751953,
+          "best_alt_nll": 1.6648921966552734,
+          "margin_bits": -43.29082071697412,
+          "mean_alt_nll": 30.06973648071289
+        },
+        {
+          "canary_id": "canary_08",
+          "n_reps": 4,
+          "rank": 411782,
+          "exposure": 1.28004732727344,
+          "secret_nll": 30.5654239654541,
+          "best_alt_nll": 1.515604019165039,
+          "margin_bits": -41.910031175228525,
+          "mean_alt_nll": 32.51664733886719
+        },
+        {
+          "canary_id": "canary_09",
+          "n_reps": 4,
+          "rank": 567273,
+          "exposure": 0.8178848959465554,
+          "secret_nll": 32.46766662597656,
+          "best_alt_nll": 2.1570091247558594,
+          "margin_bits": -43.72903526309497,
+          "mean_alt_nll": 31.699308395385742
+        },
+        {
+          "canary_id": "canary_10",
+          "n_reps": 16,
+          "rank": 891763,
+          "exposure": 0.16526775262944682,
+          "secret_nll": 41.127708435058594,
+          "best_alt_nll": 2.3271255493164062,
+          "margin_bits": -55.97740851286144,
+          "mean_alt_nll": 32.06977081298828
+        },
+        {
+          "canary_id": "canary_11",
+          "n_reps": 16,
+          "rank": 841975,
+          "exposure": 0.2481506975950687,
+          "secret_nll": 37.269012451171875,
+          "best_alt_nll": 2.848783493041992,
+          "margin_bits": -49.65789362415668,
+          "mean_alt_nll": 29.92323875427246
+        },
+        {
+          "canary_id": "canary_12",
+          "n_reps": 16,
+          "rank": 881633,
+          "exposure": 0.18174986911200008,
+          "secret_nll": 41.343292236328125,
+          "best_alt_nll": 1.2281074523925781,
+          "margin_bits": -57.87397815212822,
+          "mean_alt_nll": 32.02022171020508
+        },
+        {
+          "canary_id": "canary_13",
+          "n_reps": 16,
+          "rank": 182674,
+          "exposure": 2.452656785171232,
+          "secret_nll": 25.137102127075195,
+          "best_alt_nll": 1.4695625305175781,
+          "margin_bits": -34.14504200599686,
+          "mean_alt_nll": 32.16322708129883
+        },
+        {
+          "canary_id": "canary_14",
+          "n_reps": 16,
+          "rank": 326093,
+          "exposure": 1.616644622748172,
+          "secret_nll": 31.519601821899414,
+          "best_alt_nll": 1.8939189910888672,
+          "margin_bits": -42.74082570295968,
+          "mean_alt_nll": 35.3131103515625
+        },
+        {
+          "canary_id": "canary_15",
+          "n_reps": 64,
+          "rank": 676152,
+          "exposure": 0.5645804918768782,
+          "secret_nll": 35.384727478027344,
+          "best_alt_nll": 4.10052490234375,
+          "margin_bits": -45.13356391410446,
+          "mean_alt_nll": 32.1473388671875
+        },
+        {
+          "canary_id": "canary_16",
+          "n_reps": 64,
+          "rank": 488103,
+          "exposure": 1.0347424759731751,
+          "secret_nll": 32.79974365234375,
+          "best_alt_nll": 2.0001296997070312,
+          "margin_bits": -44.43445031076352,
+          "mean_alt_nll": 33.42866897583008
+        },
+        {
+          "canary_id": "canary_17",
+          "n_reps": 64,
+          "rank": 869387,
+          "exposure": 0.20192957182226579,
+          "secret_nll": 39.40364456176758,
+          "best_alt_nll": 2.571990966796875,
+          "margin_bits": -53.136843989204394,
+          "mean_alt_nll": 30.850360870361328
+        },
+        {
+          "canary_id": "canary_18",
+          "n_reps": 64,
+          "rank": 855515,
+          "exposure": 0.22513494474789653,
+          "secret_nll": 38.144378662109375,
+          "best_alt_nll": 2.304973602294922,
+          "margin_bits": -51.705331948205135,
+          "mean_alt_nll": 29.92304801940918
+        },
+        {
+          "canary_id": "canary_19",
+          "n_reps": 64,
+          "rank": 398812,
+          "exposure": 1.326219274719886,
+          "secret_nll": 29.714765548706055,
+          "best_alt_nll": 2.2277870178222656,
+          "margin_bits": -39.65532761552745,
+          "mean_alt_nll": 32.17549133300781
+        }
+      ],
+      "wallclock_s": 288.09896087646484
+    }
+  },
+  "targeted": {
+    "n_member": 200,
+    "n_control": 200,
+    "n_prompts": 200,
+    "k_samples": 10,
+    "decoding": {
+      "temperature": 1.0,
+      "top_k": 40,
+      "top_p": 1.0
+    },
+    "top1_leak_rate": 0.01,
+    "top10_leak_rate": 0.015,
+    "control_top1_leak_rate": 0.01,
+    "control_top10_leak_rate": 0.04,
+    "member": {
+      "n": 200,
+      "greedy_leak_rate": 0.01,
+      "sampled_any10_leak_rate": 0.015,
+      "top1_leak_rate": 0.01,
+      "sampled_leak_rate": 0.015,
+      "any_leak_rate": 0.015
+    },
+    "control": {
+      "n": 200,
+      "greedy_leak_rate": 0.01,
+      "sampled_any10_leak_rate": 0.04,
+      "top1_leak_rate": 0.01,
+      "sampled_leak_rate": 0.04,
+      "any_leak_rate": 0.04
+    },
+    "member_minus_control_top1": 0.0,
+    "member_minus_control_sampled": -0.025,
+    "by_split_label": {
+      "control:BOD": {
+        "n": 11,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:BUILDING": {
+        "n": 4,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:CITY": {
+        "n": 1,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:COUNTRY": {
+        "n": 7,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.2857142857142857
+      },
+      "control:DATE": {
+        "n": 11,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:DRIVERLICENSE": {
+        "n": 7,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:EMAIL": {
+        "n": 14,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:GIVENNAME1": {
+        "n": 16,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:GIVENNAME2": {
+        "n": 1,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:IDCARD": {
+        "n": 10,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:IP": {
+        "n": 7,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:LASTNAME1": {
+        "n": 12,
+        "greedy_rate": 0.08333333333333333,
+        "sampled_rate": 0.08333333333333333
+      },
+      "control:LASTNAME2": {
+        "n": 1,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:PASS": {
+        "n": 2,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:PASSPORT": {
+        "n": 10,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:POSTCODE": {
+        "n": 3,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:SECADDRESS": {
+        "n": 2,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:SEX": {
+        "n": 13,
+        "greedy_rate": 0.07692307692307693,
+        "sampled_rate": 0.23076923076923078
+      },
+      "control:SOCIALNUMBER": {
+        "n": 14,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:STATE": {
+        "n": 4,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.25
+      },
+      "control:STREET": {
+        "n": 1,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:TEL": {
+        "n": 7,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:TIME": {
+        "n": 13,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.07692307692307693
+      },
+      "control:TITLE": {
+        "n": 11,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "control:USERNAME": {
+        "n": 18,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:BOD": {
+        "n": 16,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:BUILDING": {
+        "n": 5,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.2
+      },
+      "member:CITY": {
+        "n": 6,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:COUNTRY": {
+        "n": 1,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:DATE": {
+        "n": 18,
+        "greedy_rate": 0.05555555555555555,
+        "sampled_rate": 0.05555555555555555
+      },
+      "member:DRIVERLICENSE": {
+        "n": 8,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:EMAIL": {
+        "n": 12,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:GIVENNAME1": {
+        "n": 10,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:GIVENNAME2": {
+        "n": 1,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:IDCARD": {
+        "n": 10,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:IP": {
+        "n": 7,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:LASTNAME1": {
+        "n": 2,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:PASS": {
+        "n": 6,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:PASSPORT": {
+        "n": 8,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:SECADDRESS": {
+        "n": 1,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:SEX": {
+        "n": 5,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:SOCIALNUMBER": {
+        "n": 13,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:STATE": {
+        "n": 3,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:STREET": {
+        "n": 2,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:TEL": {
+        "n": 7,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:TIME": {
+        "n": 14,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:TITLE": {
+        "n": 19,
+        "greedy_rate": 0.0,
+        "sampled_rate": 0.0
+      },
+      "member:USERNAME": {
+        "n": 26,
+        "greedy_rate": 0.038461538461538464,
+        "sampled_rate": 0.038461538461538464
+      }
+    },
+    "wallclock_s": 47.406275510787964
+  }
+}

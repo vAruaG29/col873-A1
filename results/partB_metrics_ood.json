@@ -1,0 +1,1950 @@
+{
+  "system": "finetuned",
+  "adapter": "adapters/best_sanitizer",
+  "base_model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "test_file": "data/partB_ood_test.jsonl",
+  "test_set": "ai4privacy_200k_en_ood",
+  "n": 1000,
+  "timestamp": "2026-09-12 14:13:59",
+  "total_wallclock_s": 115.10003352165222,
+  "docs_per_s": 8.68809477637453,
+  "runtime": {
+    "dtype": "bfloat16",
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "gen_wallclock_s": 106.37855672836304,
+    "n_input_tokens": 121162,
+    "n_new_tokens": 38764,
+    "system_prompt": "You are a PII sanitizer. Rewrite the user's text, replacing every span of personally identifiable information with a placeholder of the form [LABEL], where LABEL is the PII type. Copy every other character exactly, including whitespace, punctuation and line breaks. Output only the rewritten text.",
+    "n_shot": 0,
+    "merge_adapter": true
+  },
+  "seed": 42,
+  "n_gold_spans": 3251,
+  "n_pred_spans": 2341,
+  "exact": {
+    "micro_p": 0.2639897479709526,
+    "micro_r": 0.19009535527529992,
+    "micro_f1": 0.22103004291845493,
+    "macro_f1": 0.14012463616076873,
+    "tp": 618,
+    "fp": 1723,
+    "fn": 2633
+  },
+  "overlap_iou50": {
+    "micro_p": 0.2746689448953439,
+    "micro_r": 0.1977852968317441,
+    "micro_f1": 0.2299713876967096,
+    "macro_f1": 0.15138050764772065,
+    "tp": 643,
+    "fp": 1698,
+    "fn": 2608
+  },
+  "exact_strict_label": {
+    "micro_p": 0.23024348568987613,
+    "micro_r": 0.16579513995693632,
+    "micro_f1": 0.19277539341917024,
+    "macro_f1": 0.13136243562838185,
+    "tp": 539,
+    "fp": 1802,
+    "fn": 2712
+  },
+  "overlap_iou50_strict_label": {
+    "micro_p": 0.2409226826142674,
+    "micro_r": 0.1734850815133805,
+    "micro_f1": 0.2017167381974249,
+    "macro_f1": 0.1426183071153338,
+    "tp": 564,
+    "fp": 1777,
+    "fn": 2687
+  },
+  "exact_label_agnostic": {
+    "micro_p": 0.8821016659547202,
+    "micro_r": 0.6351891725622886,
+    "micro_f1": 0.7385550786838341,
+    "macro_f1": 0.7066146237425658,
+    "tp": 2065,
+    "fp": 276,
+    "fn": 1186
+  },
+  "overlap_iou50_label_agnostic": {
+    "micro_p": 0.9205467748825288,
+    "micro_r": 0.6628729621654875,
+    "micro_f1": 0.7707439198855507,
+    "macro_f1": 0.7421774192211271,
+    "tp": 2155,
+    "fp": 186,
+    "fn": 1096
+  },
+  "exact_mapped": {
+    "micro_p": 0.662964545066211,
+    "micro_r": 0.4773915718240541,
+    "micro_f1": 0.5550786838340487,
+    "macro_f1": 0.4907518115937747,
+    "tp": 1552,
+    "fp": 789,
+    "fn": 1699
+  },
+  "overlap_iou50_mapped": {
+    "micro_p": 0.6817599316531396,
+    "micro_r": 0.49092586896339585,
+    "micro_f1": 0.5708154506437768,
+    "macro_f1": 0.5077795639337107,
+    "tp": 1596,
+    "fp": 745,
+    "fn": 1655
+  },
+  "per_class": {
+    "FIRSTNAME": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 334,
+      "tp": 0,
+      "fp": 0,
+      "fn": 334
+    },
+    "LASTNAME": {
+      "p": 0.398989898989899,
+      "r": 0.6370967741935484,
+      "f1": 0.4906832298136647,
+      "support": 124,
+      "tp": 79,
+      "fp": 119,
+      "fn": 45
+    },
+    "DATE": {
+      "p": 0.7563025210084033,
+      "r": 0.9,
+      "f1": 0.8219178082191781,
+      "support": 100,
+      "tp": 90,
+      "fp": 29,
+      "fn": 10
+    },
+    "EMAIL": {
+      "p": 1.0,
+      "r": 0.9896907216494846,
+      "f1": 0.9948186528497409,
+      "support": 97,
+      "tp": 96,
+      "fp": 0,
+      "fn": 1
+    },
+    "PREFIX": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 84,
+      "tp": 0,
+      "fp": 0,
+      "fn": 84
+    },
+    "AMOUNT": {
+      "p": 1.0,
+      "r": 0.012987012987012988,
+      "f1": 0.025641025641025647,
+      "support": 77,
+      "tp": 1,
+      "fp": 0,
+      "fn": 76
+    },
+    "JOBAREA": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 72,
+      "tp": 0,
+      "fp": 0,
+      "fn": 72
+    },
+    "PASSWORD": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 71,
+      "tp": 0,
+      "fp": 0,
+      "fn": 71
+    },
+    "URL": {
+      "p": 1.0,
+      "r": 0.07042253521126761,
+      "f1": 0.13157894736842107,
+      "support": 71,
+      "tp": 5,
+      "fp": 0,
+      "fn": 66
+    },
+    "ACCOUNTNUMBER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 70,
+      "tp": 0,
+      "fp": 0,
+      "fn": 70
+    }
+  },
+  "per_class_all": {
+    "FIRSTNAME": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 334,
+      "tp": 0,
+      "fp": 0,
+      "fn": 334
+    },
+    "LASTNAME": {
+      "p": 0.398989898989899,
+      "r": 0.6370967741935484,
+      "f1": 0.4906832298136647,
+      "support": 124,
+      "tp": 79,
+      "fp": 119,
+      "fn": 45
+    },
+    "DATE": {
+      "p": 0.7563025210084033,
+      "r": 0.9,
+      "f1": 0.8219178082191781,
+      "support": 100,
+      "tp": 90,
+      "fp": 29,
+      "fn": 10
+    },
+    "EMAIL": {
+      "p": 1.0,
+      "r": 0.9896907216494846,
+      "f1": 0.9948186528497409,
+      "support": 97,
+      "tp": 96,
+      "fp": 0,
+      "fn": 1
+    },
+    "PREFIX": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 84,
+      "tp": 0,
+      "fp": 0,
+      "fn": 84
+    },
+    "AMOUNT": {
+      "p": 1.0,
+      "r": 0.012987012987012988,
+      "f1": 0.025641025641025647,
+      "support": 77,
+      "tp": 1,
+      "fp": 0,
+      "fn": 76
+    },
+    "JOBAREA": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 72,
+      "tp": 0,
+      "fp": 0,
+      "fn": 72
+    },
+    "PASSWORD": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 71,
+      "tp": 0,
+      "fp": 0,
+      "fn": 71
+    },
+    "URL": {
+      "p": 1.0,
+      "r": 0.07042253521126761,
+      "f1": 0.13157894736842107,
+      "support": 71,
+      "tp": 5,
+      "fp": 0,
+      "fn": 66
+    },
+    "ACCOUNTNUMBER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 70,
+      "tp": 0,
+      "fp": 0,
+      "fn": 70
+    },
+    "COUNTY": {
+      "p": 1.0,
+      "r": 0.014285714285714285,
+      "f1": 0.028169014084507043,
+      "support": 70,
+      "tp": 1,
+      "fp": 0,
+      "fn": 69
+    },
+    "CREDITCARDNUMBER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 70,
+      "tp": 0,
+      "fp": 0,
+      "fn": 70
+    },
+    "MIDDLENAME": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 70,
+      "tp": 0,
+      "fp": 0,
+      "fn": 70
+    },
+    "CITY": {
+      "p": 0.4051724137931034,
+      "r": 0.6911764705882353,
+      "f1": 0.5108695652173914,
+      "support": 68,
+      "tp": 47,
+      "fp": 69,
+      "fn": 21
+    },
+    "ACCOUNTNAME": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 65,
+      "tp": 0,
+      "fp": 0,
+      "fn": 65
+    },
+    "TIME": {
+      "p": 0.921875,
+      "r": 0.9076923076923077,
+      "f1": 0.9147286821705427,
+      "support": 65,
+      "tp": 59,
+      "fp": 5,
+      "fn": 6
+    },
+    "BITCOINADDRESS": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 62,
+      "tp": 0,
+      "fp": 0,
+      "fn": 62
+    },
+    "BUILDINGNUMBER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 62,
+      "tp": 0,
+      "fp": 0,
+      "fn": 62
+    },
+    "COMPANYNAME": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 62,
+      "tp": 0,
+      "fp": 0,
+      "fn": 62
+    },
+    "CURRENCYSYMBOL": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 62,
+      "tp": 0,
+      "fp": 0,
+      "fn": 62
+    },
+    "STATE": {
+      "p": 0.43243243243243246,
+      "r": 0.5333333333333333,
+      "f1": 0.47761194029850745,
+      "support": 60,
+      "tp": 32,
+      "fp": 42,
+      "fn": 28
+    },
+    "USERNAME": {
+      "p": 0.3963963963963964,
+      "r": 0.7333333333333333,
+      "f1": 0.5146198830409356,
+      "support": 60,
+      "tp": 44,
+      "fp": 67,
+      "fn": 16
+    },
+    "SEX": {
+      "p": 0.5306122448979592,
+      "r": 0.8813559322033898,
+      "f1": 0.6624203821656052,
+      "support": 59,
+      "tp": 52,
+      "fp": 46,
+      "fn": 7
+    },
+    "IPV4": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 58,
+      "tp": 0,
+      "fp": 0,
+      "fn": 58
+    },
+    "AGE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 57,
+      "tp": 0,
+      "fp": 0,
+      "fn": 57
+    },
+    "DOB": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 57,
+      "tp": 0,
+      "fp": 0,
+      "fn": 57
+    },
+    "SECONDARYADDRESS": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 56,
+      "tp": 0,
+      "fp": 0,
+      "fn": 56
+    },
+    "STREET": {
+      "p": 0.75,
+      "r": 0.8035714285714286,
+      "f1": 0.7758620689655172,
+      "support": 56,
+      "tp": 45,
+      "fp": 15,
+      "fn": 11
+    },
+    "GENDER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 55,
+      "tp": 0,
+      "fp": 0,
+      "fn": 55
+    },
+    "JOBTYPE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 55,
+      "tp": 0,
+      "fp": 0,
+      "fn": 55
+    },
+    "ZIPCODE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 54,
+      "tp": 0,
+      "fp": 0,
+      "fn": 54
+    },
+    "PHONENUMBER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 53,
+      "tp": 0,
+      "fp": 0,
+      "fn": 53
+    },
+    "IPV6": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 52,
+      "tp": 0,
+      "fp": 0,
+      "fn": 52
+    },
+    "JOBTITLE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 52,
+      "tp": 0,
+      "fp": 0,
+      "fn": 52
+    },
+    "IP": {
+      "p": 0.2784090909090909,
+      "r": 0.98,
+      "f1": 0.4336283185840708,
+      "support": 50,
+      "tp": 49,
+      "fp": 127,
+      "fn": 1
+    },
+    "USERAGENT": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 50,
+      "tp": 0,
+      "fp": 0,
+      "fn": 50
+    },
+    "SSN": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 49,
+      "tp": 0,
+      "fp": 0,
+      "fn": 49
+    },
+    "PHONEIMEI": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 45,
+      "tp": 0,
+      "fp": 0,
+      "fn": 45
+    },
+    "CREDITCARDISSUER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 43,
+      "tp": 0,
+      "fp": 0,
+      "fn": 43
+    },
+    "CURRENCY": {
+      "p": 0.4444444444444444,
+      "r": 0.19047619047619047,
+      "f1": 0.26666666666666666,
+      "support": 42,
+      "tp": 8,
+      "fp": 10,
+      "fn": 34
+    },
+    "IBAN": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 41,
+      "tp": 0,
+      "fp": 0,
+      "fn": 41
+    },
+    "MASKEDNUMBER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 40,
+      "tp": 0,
+      "fp": 0,
+      "fn": 40
+    },
+    "NEARBYGPSCOORDINATE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 35,
+      "tp": 0,
+      "fp": 0,
+      "fn": 35
+    },
+    "ORDINALDIRECTION": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 34,
+      "tp": 0,
+      "fp": 0,
+      "fn": 34
+    },
+    "ETHEREUMADDRESS": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 32,
+      "tp": 0,
+      "fp": 0,
+      "fn": 32
+    },
+    "HEIGHT": {
+      "p": 0.8636363636363636,
+      "r": 0.6129032258064516,
+      "f1": 0.7169811320754716,
+      "support": 31,
+      "tp": 19,
+      "fp": 3,
+      "fn": 12
+    },
+    "MAC": {
+      "p": 1.0,
+      "r": 0.5517241379310345,
+      "f1": 0.7111111111111111,
+      "support": 29,
+      "tp": 16,
+      "fp": 0,
+      "fn": 13
+    },
+    "EYECOLOR": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 26,
+      "tp": 0,
+      "fp": 0,
+      "fn": 26
+    },
+    "VEHICLEVRM": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 26,
+      "tp": 0,
+      "fp": 0,
+      "fn": 26
+    },
+    "LITECOINADDRESS": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 25,
+      "tp": 0,
+      "fp": 0,
+      "fn": 25
+    },
+    "VEHICLEVIN": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 24,
+      "tp": 0,
+      "fp": 0,
+      "fn": 24
+    },
+    "CREDITCARDCVV": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 22,
+      "tp": 0,
+      "fp": 0,
+      "fn": 22
+    },
+    "PIN": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 19,
+      "tp": 0,
+      "fp": 0,
+      "fn": 19
+    },
+    "CURRENCYCODE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 17,
+      "tp": 0,
+      "fp": 0,
+      "fn": 17
+    },
+    "BIC": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 16,
+      "tp": 0,
+      "fp": 0,
+      "fn": 16
+    },
+    "CURRENCYNAME": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 15,
+      "tp": 0,
+      "fp": 0,
+      "fn": 15
+    },
+    "BOD": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 64,
+      "fn": 0
+    },
+    "BROWSER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "BTC": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "BUILDING": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 56,
+      "fn": 0
+    },
+    "COLOR": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 5,
+      "fn": 0
+    },
+    "COUNTRY": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 13,
+      "fn": 0
+    },
+    "CPU": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "CREDITCARD": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "DRIVERLICENSE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 48,
+      "fn": 0
+    },
+    "ETH": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "EYE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "GEOCOORD": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 20,
+      "fn": 0
+    },
+    "GIVENNAME": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 186,
+      "fn": 0
+    },
+    "GROWTH": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "IDCARD": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 269,
+      "fn": 0
+    },
+    "IMEI": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "OS": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 7,
+      "fn": 0
+    },
+    "PASS": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 121,
+      "fn": 0
+    },
+    "PASSPORT": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 36,
+      "fn": 0
+    },
+    "POSTCODE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 79,
+      "fn": 0
+    },
+    "SECADDRESS": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 53,
+      "fn": 0
+    },
+    "SECENTER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "SOCIALNUMBER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 72,
+      "fn": 0
+    },
+    "TEL": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 74,
+      "fn": 0
+    },
+    "TITLE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 38,
+      "fn": 0
+    },
+    "VERSION": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "VIN": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 8,
+      "fn": 0
+    },
+    "VRM": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    }
+  },
+  "per_class_exact": {
+    "FIRSTNAME": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 334,
+      "tp": 0,
+      "fp": 0,
+      "fn": 334
+    },
+    "LASTNAME": {
+      "p": 0.398989898989899,
+      "r": 0.6370967741935484,
+      "f1": 0.4906832298136647,
+      "support": 124,
+      "tp": 79,
+      "fp": 119,
+      "fn": 45
+    },
+    "DATE": {
+      "p": 0.7563025210084033,
+      "r": 0.9,
+      "f1": 0.8219178082191781,
+      "support": 100,
+      "tp": 90,
+      "fp": 29,
+      "fn": 10
+    },
+    "EMAIL": {
+      "p": 0.9895833333333334,
+      "r": 0.979381443298969,
+      "f1": 0.9844559585492227,
+      "support": 97,
+      "tp": 95,
+      "fp": 1,
+      "fn": 2
+    },
+    "PREFIX": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 84,
+      "tp": 0,
+      "fp": 0,
+      "fn": 84
+    },
+    "AMOUNT": {
+      "p": 1.0,
+      "r": 0.012987012987012988,
+      "f1": 0.025641025641025647,
+      "support": 77,
+      "tp": 1,
+      "fp": 0,
+      "fn": 76
+    },
+    "JOBAREA": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 72,
+      "tp": 0,
+      "fp": 0,
+      "fn": 72
+    },
+    "PASSWORD": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 71,
+      "tp": 0,
+      "fp": 0,
+      "fn": 71
+    },
+    "URL": {
+      "p": 1.0,
+      "r": 0.07042253521126761,
+      "f1": 0.13157894736842107,
+      "support": 71,
+      "tp": 5,
+      "fp": 0,
+      "fn": 66
+    },
+    "ACCOUNTNUMBER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 70,
+      "tp": 0,
+      "fp": 0,
+      "fn": 70
+    },
+    "COUNTY": {
+      "p": 1.0,
+      "r": 0.014285714285714285,
+      "f1": 0.028169014084507043,
+      "support": 70,
+      "tp": 1,
+      "fp": 0,
+      "fn": 69
+    },
+    "CREDITCARDNUMBER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 70,
+      "tp": 0,
+      "fp": 0,
+      "fn": 70
+    },
+    "MIDDLENAME": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 70,
+      "tp": 0,
+      "fp": 0,
+      "fn": 70
+    },
+    "CITY": {
+      "p": 0.39655172413793105,
+      "r": 0.6764705882352942,
+      "f1": 0.5,
+      "support": 68,
+      "tp": 46,
+      "fp": 70,
+      "fn": 22
+    },
+    "ACCOUNTNAME": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 65,
+      "tp": 0,
+      "fp": 0,
+      "fn": 65
+    },
+    "TIME": {
+      "p": 0.921875,
+      "r": 0.9076923076923077,
+      "f1": 0.9147286821705427,
+      "support": 65,
+      "tp": 59,
+      "fp": 5,
+      "fn": 6
+    },
+    "BITCOINADDRESS": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 62,
+      "tp": 0,
+      "fp": 0,
+      "fn": 62
+    },
+    "BUILDINGNUMBER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 62,
+      "tp": 0,
+      "fp": 0,
+      "fn": 62
+    },
+    "COMPANYNAME": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 62,
+      "tp": 0,
+      "fp": 0,
+      "fn": 62
+    },
+    "CURRENCYSYMBOL": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 62,
+      "tp": 0,
+      "fp": 0,
+      "fn": 62
+    },
+    "STATE": {
+      "p": 0.43243243243243246,
+      "r": 0.5333333333333333,
+      "f1": 0.47761194029850745,
+      "support": 60,
+      "tp": 32,
+      "fp": 42,
+      "fn": 28
+    },
+    "USERNAME": {
+      "p": 0.3963963963963964,
+      "r": 0.7333333333333333,
+      "f1": 0.5146198830409356,
+      "support": 60,
+      "tp": 44,
+      "fp": 67,
+      "fn": 16
+    },
+    "SEX": {
+      "p": 0.5204081632653061,
+      "r": 0.864406779661017,
+      "f1": 0.6496815286624203,
+      "support": 59,
+      "tp": 51,
+      "fp": 47,
+      "fn": 8
+    },
+    "IPV4": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 58,
+      "tp": 0,
+      "fp": 0,
+      "fn": 58
+    },
+    "AGE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 57,
+      "tp": 0,
+      "fp": 0,
+      "fn": 57
+    },
+    "DOB": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 57,
+      "tp": 0,
+      "fp": 0,
+      "fn": 57
+    },
+    "SECONDARYADDRESS": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 56,
+      "tp": 0,
+      "fp": 0,
+      "fn": 56
+    },
+    "STREET": {
+      "p": 0.5833333333333334,
+      "r": 0.625,
+      "f1": 0.603448275862069,
+      "support": 56,
+      "tp": 35,
+      "fp": 25,
+      "fn": 21
+    },
+    "GENDER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 55,
+      "tp": 0,
+      "fp": 0,
+      "fn": 55
+    },
+    "JOBTYPE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 55,
+      "tp": 0,
+      "fp": 0,
+      "fn": 55
+    },
+    "ZIPCODE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 54,
+      "tp": 0,
+      "fp": 0,
+      "fn": 54
+    },
+    "PHONENUMBER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 53,
+      "tp": 0,
+      "fp": 0,
+      "fn": 53
+    },
+    "IPV6": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 52,
+      "tp": 0,
+      "fp": 0,
+      "fn": 52
+    },
+    "JOBTITLE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 52,
+      "tp": 0,
+      "fp": 0,
+      "fn": 52
+    },
+    "IP": {
+      "p": 0.2727272727272727,
+      "r": 0.96,
+      "f1": 0.42477876106194684,
+      "support": 50,
+      "tp": 48,
+      "fp": 128,
+      "fn": 2
+    },
+    "USERAGENT": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 50,
+      "tp": 0,
+      "fp": 0,
+      "fn": 50
+    },
+    "SSN": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 49,
+      "tp": 0,
+      "fp": 0,
+      "fn": 49
+    },
+    "PHONEIMEI": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 45,
+      "tp": 0,
+      "fp": 0,
+      "fn": 45
+    },
+    "CREDITCARDISSUER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 43,
+      "tp": 0,
+      "fp": 0,
+      "fn": 43
+    },
+    "CURRENCY": {
+      "p": 0.4444444444444444,
+      "r": 0.19047619047619047,
+      "f1": 0.26666666666666666,
+      "support": 42,
+      "tp": 8,
+      "fp": 10,
+      "fn": 34
+    },
+    "IBAN": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 41,
+      "tp": 0,
+      "fp": 0,
+      "fn": 41
+    },
+    "MASKEDNUMBER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 40,
+      "tp": 0,
+      "fp": 0,
+      "fn": 40
+    },
+    "NEARBYGPSCOORDINATE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 35,
+      "tp": 0,
+      "fp": 0,
+      "fn": 35
+    },
+    "ORDINALDIRECTION": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 34,
+      "tp": 0,
+      "fp": 0,
+      "fn": 34
+    },
+    "ETHEREUMADDRESS": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 32,
+      "tp": 0,
+      "fp": 0,
+      "fn": 32
+    },
+    "HEIGHT": {
+      "p": 0.36363636363636365,
+      "r": 0.25806451612903225,
+      "f1": 0.3018867924528302,
+      "support": 31,
+      "tp": 8,
+      "fp": 14,
+      "fn": 23
+    },
+    "MAC": {
+      "p": 1.0,
+      "r": 0.5517241379310345,
+      "f1": 0.7111111111111111,
+      "support": 29,
+      "tp": 16,
+      "fp": 0,
+      "fn": 13
+    },
+    "EYECOLOR": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 26,
+      "tp": 0,
+      "fp": 0,
+      "fn": 26
+    },
+    "VEHICLEVRM": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 26,
+      "tp": 0,
+      "fp": 0,
+      "fn": 26
+    },
+    "LITECOINADDRESS": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 25,
+      "tp": 0,
+      "fp": 0,
+      "fn": 25
+    },
+    "VEHICLEVIN": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 24,
+      "tp": 0,
+      "fp": 0,
+      "fn": 24
+    },
+    "CREDITCARDCVV": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 22,
+      "tp": 0,
+      "fp": 0,
+      "fn": 22
+    },
+    "PIN": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 19,
+      "tp": 0,
+      "fp": 0,
+      "fn": 19
+    },
+    "CURRENCYCODE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 17,
+      "tp": 0,
+      "fp": 0,
+      "fn": 17
+    },
+    "BIC": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 16,
+      "tp": 0,
+      "fp": 0,
+      "fn": 16
+    },
+    "CURRENCYNAME": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 15,
+      "tp": 0,
+      "fp": 0,
+      "fn": 15
+    },
+    "BOD": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 64,
+      "fn": 0
+    },
+    "BROWSER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "BTC": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "BUILDING": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 56,
+      "fn": 0
+    },
+    "COLOR": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 5,
+      "fn": 0
+    },
+    "COUNTRY": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 13,
+      "fn": 0
+    },
+    "CPU": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "CREDITCARD": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "DRIVERLICENSE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 48,
+      "fn": 0
+    },
+    "ETH": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "EYE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "GEOCOORD": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 20,
+      "fn": 0
+    },
+    "GIVENNAME": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 186,
+      "fn": 0
+    },
+    "GROWTH": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "IDCARD": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 269,
+      "fn": 0
+    },
+    "IMEI": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "OS": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 7,
+      "fn": 0
+    },
+    "PASS": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 121,
+      "fn": 0
+    },
+    "PASSPORT": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 36,
+      "fn": 0
+    },
+    "POSTCODE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 79,
+      "fn": 0
+    },
+    "SECADDRESS": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 53,
+      "fn": 0
+    },
+    "SECENTER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "SOCIALNUMBER": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 72,
+      "fn": 0
+    },
+    "TEL": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 74,
+      "fn": 0
+    },
+    "TITLE": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 38,
+      "fn": 0
+    },
+    "VERSION": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "VIN": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 8,
+      "fn": 0
+    },
+    "VRM": {
+      "p": 0.0,
+      "r": 0.0,
+      "f1": 0.0,
+      "support": 0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    }
+  },
+  "per_class_top10": [
+    "FIRSTNAME",
+    "LASTNAME",
+    "DATE",
+    "EMAIL",
+    "PREFIX",
+    "AMOUNT",
+    "JOBAREA",
+    "PASSWORD",
+    "URL",
+    "ACCOUNTNUMBER"
+  ],
+  "leak_rate": 0.2992925253768071,
+  "leak_rate_len_ge_3": 0.29063883617963315,
+  "leaked_values_total": 973,
+  "doc_level_leak_rate": 0.635,
+  "over_masking_rate": 0.0006232325514361615,
+  "over_masking_rate_nonspace": 0.00043529278171013287,
+  "over_masked_chars": 80,
+  "non_pii_chars": 128363,
+  "well_formed_rate": 0.989,
+  "alignment_diagnostics": {
+    "n_placeholders": 2341,
+    "ambiguous_adjacent": 4,
+    "inserted_placeholders": 4,
+    "native_brackets_copied": 0,
+    "unlabeled_removals": 11,
+    "unlabeled_removed_chars": 109,
+    "ws_removed_chars": 0,
+    "inserted_chars": 67,
+    "inserted_nonspace": 52,
+    "truncated_before_align": 0,
+    "boundary_repaired": 83,
+    "empty_output": 0,
+    "well_formed": 989
+  },
+  "error_taxonomy": {
+    "totals": {
+      "missed_no_overlap": 970,
+      "covered_by_unlabeled_removal": 1,
+      "boundary_error_correct_label": 7,
+      "wrong_label_good_span": 1512,
+      "boundary_and_label": 118,
+      "spurious_predictions": 1698,
+      "missed_and_leaked": 973
+    },
+    "missed_no_overlap_by_class": {
+      "FIRSTNAME": 159,
+      "PREFIX": 75,
+      "JOBAREA": 71,
+      "ACCOUNTNAME": 64,
+      "URL": 62,
+      "JOBTITLE": 52,
+      "AMOUNT": 49,
+      "JOBTYPE": 43,
+      "CURRENCYSYMBOL": 42,
+      "LASTNAME": 39,
+      "USERAGENT": 36,
+      "MIDDLENAME": 33,
+      "ORDINALDIRECTION": 27,
+      "AGE": 26,
+      "CURRENCY": 23,
+      "STATE": 16,
+      "CREDITCARDISSUER": 15,
+      "NEARBYGPSCOORDINATE": 14,
+      "GENDER": 13,
+      "EYECOLOR": 13,
+      "COMPANYNAME": 11,
+      "USERNAME": 11,
+      "COUNTY": 10,
+      "CURRENCYCODE": 10,
+      "CURRENCYNAME": 8
+    },
+    "covered_by_unlabeled_removal_by_class": {
+      "NEARBYGPSCOORDINATE": 1
+    },
+    "boundary_error_by_class": {
+      "HEIGHT": 3,
+      "STREET": 2,
+      "STATE": 1,
+      "IP": 1
+    },
+    "wrong_label_by_class": {
+      "FIRSTNAME": 174,
+      "PASSWORD": 71,
+      "CREDITCARDNUMBER": 69,
+      "ACCOUNTNUMBER": 66,
+      "BITCOINADDRESS": 61,
+      "COUNTY": 59,
+      "IPV4": 58,
+      "DOB": 57,
+      "SECONDARYADDRESS": 54,
+      "ZIPCODE": 52,
+      "BUILDINGNUMBER": 51,
+      "IPV6": 49,
+      "SSN": 49,
+      "PHONENUMBER": 48,
+      "PHONEIMEI": 45,
+      "IBAN": 41,
+      "MASKEDNUMBER": 39,
+      "MIDDLENAME": 37,
+      "GENDER": 35,
+      "ETHEREUMADDRESS": 32,
+      "CREDITCARDISSUER": 27,
+      "VEHICLEVRM": 25,
+      "AMOUNT": 25,
+      "LITECOINADDRESS": 24,
+      "VEHICLEVIN": 24
+    },
+    "boundary_and_label_by_class": {
+      "COMPANYNAME": 37,
+      "CURRENCYSYMBOL": 15,
+      "USERAGENT": 11,
+      "AGE": 11,
+      "BUILDINGNUMBER": 9,
+      "GENDER": 7,
+      "PHONENUMBER": 5,
+      "CURRENCY": 4,
+      "EYECOLOR": 3,
+      "ZIPCODE": 2,
+      "STATE": 2,
+      "AMOUNT": 2,
+      "CITY": 2,
+      "SECONDARYADDRESS": 1,
+      "LITECOINADDRESS": 1,
+      "CURRENCYNAME": 1,
+      "URL": 1,
+      "CREDITCARDISSUER": 1,
+      "FIRSTNAME": 1,
+      "ACCOUNTNUMBER": 1,
+      "USERNAME": 1
+    },
+    "spurious_by_class": {
+      "IDCARD": 269,
+      "GIVENNAME": 186,
+      "IP": 127,
+      "PASS": 121,
+      "LASTNAME": 119,
+      "POSTCODE": 79,
+      "TEL": 74,
+      "SOCIALNUMBER": 72,
+      "CITY": 69,
+      "USERNAME": 67,
+      "BOD": 64,
+      "BUILDING": 56,
+      "SECADDRESS": 53,
+      "DRIVERLICENSE": 48,
+      "SEX": 46,
+      "STATE": 42,
+      "TITLE": 38,
+      "PASSPORT": 36,
+      "DATE": 29,
+      "GEOCOORD": 20,
+      "STREET": 15,
+      "COUNTRY": 13,
+      "CURRENCY": 10,
+      "VIN": 8,
+      "OS": 7
+    },
+    "top_label_confusions": {
+      "FIRSTNAME->GIVENNAME": 143,
+      "PASSWORD->PASS": 69,
+      "CREDITCARDNUMBER->IDCARD": 68,
+      "IPV4->IP": 58,
+      "ZIPCODE->POSTCODE": 52,
+      "PHONENUMBER->TEL": 52,
+      "SECONDARYADDRESS->SECADDRESS": 51,
+      "IPV6->IP": 49,
+      "SSN->SOCIALNUMBER": 43,
+      "MASKEDNUMBER->IDCARD": 39,
+      "BUILDINGNUMBER->BUILDING": 38,
+      "GENDER->SEX": 36,
+      "COUNTY->STATE": 35,
+      "COMPANYNAME->LASTNAME": 35,
+      "IBAN->IDCARD": 32,
+      "ACCOUNTNUMBER->IDCARD": 31,
+      "ACCOUNTNUMBER->PASSPORT": 29,
+      "DOB->BOD": 29,
+      "BITCOINADDRESS->PASS": 28,
+      "DOB->DATE": 28,
+      "MIDDLENAME->GIVENNAME": 26,
+      "COUNTY->CITY": 23,
+      "NEARBYGPSCOORDINATE->GEOCOORD": 20,
+      "PHONEIMEI->TEL": 20,
+      "FIRSTNAME->LASTNAME": 20
+    },
+    "leaked_by_class": {
+      "FIRSTNAME": 160,
+      "PREFIX": 75,
+      "JOBAREA": 71,
+      "ACCOUNTNAME": 64,
+      "URL": 62,
+      "JOBTITLE": 52,
+      "AMOUNT": 49,
+      "CURRENCYSYMBOL": 44,
+      "JOBTYPE": 43,
+      "LASTNAME": 39,
+      "USERAGENT": 36,
+      "MIDDLENAME": 33,
+      "ORDINALDIRECTION": 27,
+      "AGE": 26,
+      "CURRENCY": 23,
+      "STATE": 16,
+      "CREDITCARDISSUER": 15,
+      "NEARBYGPSCOORDINATE": 14,
+      "GENDER": 13,
+      "EYECOLOR": 13,
+      "COMPANYNAME": 11,
+      "USERNAME": 11,
+      "COUNTY": 10,
+      "CURRENCYCODE": 10,
+      "CURRENCYNAME": 8
+    },
+    "missed_and_leaked_by_class": {
+      "FIRSTNAME": 160,
+      "PREFIX": 75,
+      "JOBAREA": 71,
+      "ACCOUNTNAME": 64,
+      "URL": 62,
+      "JOBTITLE": 52,
+      "AMOUNT": 49,
+      "CURRENCYSYMBOL": 44,
+      "JOBTYPE": 43,
+      "LASTNAME": 39,
+      "USERAGENT": 36,
+      "MIDDLENAME": 33,
+      "ORDINALDIRECTION": 27,
+      "AGE": 26,
+      "CURRENCY": 23,
+      "STATE": 16,
+      "CREDITCARDISSUER": 15,
+      "NEARBYGPSCOORDINATE": 14,
+      "GENDER": 13,
+      "EYECOLOR": 13,
+      "COMPANYNAME": 11,
+      "USERNAME": 11,
+      "COUNTY": 10,
+      "CURRENCYCODE": 10,
+      "CURRENCYNAME": 8
+    }
+  },
+  "latency": {
+    "mean_ms": 106.17128799999982,
+    "p50_ms": 96.256,
+    "p95_ms": 179.159
+  }
+}
